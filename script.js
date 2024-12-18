@@ -1,35 +1,36 @@
-var overlay=document.getElementById("overlay")
-var popup=document.getElementById("popup")
-var addbtn=document.getElementById("addbtn")
-var btn1=document.getElementById("btn1")
-var btn2=document.getElementById("btn2")
-var input1=document.getElementById("input1")
-var input2=document.getElementById("input2")
-var input3=document.getElementById("input3")
-addbtn.addEventListener("click",function(){
-    popup.style.display="block"
+//select popup,overlay and button for insert into firstadd button
+var popup=document.getElementById("popup");
+var overlay=document.getElementById("overlay");
+var firstadd=document.getElementById("firstadd");
+firstadd.addEventListener("click",function(){
     overlay.style.display="block"
-});
+    popup.style.display="block"
+})
+//cancel button
+var secdel=document.getElementById("secdel")
+secdel.addEventListener("click",function(){
+    overlay.style.display="none"
+    popup.style.display="none"
+})
+//add button and select input values
+var secadd=document.getElementById("secadd")
+var container=document.querySelector(".container")
+var bktitle=document.getElementById("bktitle")
+var bkauthor=document.getElementById("bkauthor")
+var descript=document.getElementById("descript")
+secadd.addEventListener("click",function(event){
+    event.preventDefault()
+    var div=document.createElement("div")
+    div.setAttribute("class","samp")
+    div.innerHTML=`<h2 style=" color: rgba(255, 80, 80);">${bktitle.value}</h2>
+    <h4>${bkauthor.value}</h4>
+    <p>${descript.value}</p>
+    <button id="outdel" onclick="del(event)">delete</button>`
+    container.append(div)
+    overlay.style.display="none"
+    popup.style.display="none"
+})
+//delete button
 function del(event){
     event.target.parentElement.remove()
 }
-var container=document.getElementById("container")
-function add(){
-    var addlist=document.createElement("div")
-    addlist.setAttribute("class","div4")
-    addlist.style.width="26%"
-    addlist.style.backgroundcolor= "black"
-    addlist.style.color="white"
-    addlist.style.padding="15px"
-    addlist.style.borderRadius= "5%"
-    addlist.style.marginTop="7%"
-    addlist.style.marginLeft= "3%"
-    addlist.innerHTML="<h2>input1.textcontent</h2>"+"<h4>input2.textContent</h4>"
-}
-var btn3=document.getElementById("btn3")
-btn3.addEventListener("click",function(event){
-    event.preventDefault();
-     popup.style.display="none"
-    overlay.style.display="none"
-
-})
